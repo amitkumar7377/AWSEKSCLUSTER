@@ -1,28 +1,17 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: my-virtual-service
+  name: sample-app
 spec:
   hosts:
-    - "example.com"
+  - "example.com"
   gateways:
-    - my-gateway
+  - sample-app-gateway
   http:
-    - match:
-        - uri:
-            prefix: /service1
-      route:
-        - destination:
-            host: service1-service
-            port:
-              number: 8080
-    - match:
-        - uri:
-            prefix: /service2
-      route:
-        - destination:
-            host: service2-service
-            port:
-              number: 8080
+  - route:
+    - destination:
+        host: sample-app
+        port:
+          number: 80
 
   
